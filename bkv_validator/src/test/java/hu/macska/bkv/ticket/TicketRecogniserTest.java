@@ -46,19 +46,19 @@ public class TicketRecogniserTest {
     }
 
     @Test
-    public void recogniseTicketMetroTest() {
+    public void recogniseTransporterMetroTest() {
         Ticket ticket = ticketRecogniser.recogniseTransporter("0643xxx911281305");
         assertEquals(Transporter.METRO,ticket.transporter);
     }
 
     @Test
-    public void recogniseTicketTramOrBusTest() {
+    public void recogniseTransporterTramOrBusTest() {
         Ticket ticket = ticketRecogniser.recogniseTransporter("5293111008172015");
         assertEquals(Transporter.TRUMORBUS,ticket.transporter);
     }
 
     @Test
-    public void recogniseTicketNightLineTest() {
+    public void recogniseTransporterNightLineTest() {
         Ticket ticket = ticketRecogniser.recogniseTransporter("9293111008172015");
         assertEquals(Transporter.NIGHTLINE,ticket.transporter);
     }
