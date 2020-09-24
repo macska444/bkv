@@ -7,6 +7,7 @@ import hu.macska.bkv.ticket.exception.TicketNumberIsTooShort;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TicketRecogniserTest {
@@ -42,5 +43,11 @@ public class TicketRecogniserTest {
     public void validateTicketNumberValidSyntacticallyTest() {
         boolean valid = ticketRecogniser.validateTicketNumber("0643xxx911281305");
         assertTrue(valid);
+    }
+
+    @Test
+    public void recogniseTicketMetroTest() {
+        Ticket ticket = ticketRecogniser.recogniseTicket("0643xxx911281305");
+        assertEquals(Transporter.METRO,ticket.transporter);
     }
 }

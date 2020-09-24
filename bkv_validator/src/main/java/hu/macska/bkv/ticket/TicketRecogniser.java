@@ -17,4 +17,8 @@ public class TicketRecogniser {
             throw new TicketNumberHasInvalidCharacter();
         return true;
     }
+
+    public Ticket recogniseTicket(String s) {
+        return null;
+    }
 }
