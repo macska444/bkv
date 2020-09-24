@@ -7,6 +7,10 @@ import hu.macska.bkv.ticket.exception.TicketNumberIsTooShort;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -47,19 +51,36 @@ public class TicketRecogniserTest {
 
     @Test
     public void recogniseTransporterMetroTest() {
-        Ticket ticket = ticketRecogniser.recogniseTransporter("0643xxx911281305");
+        Ticket ticket = new Ticket("0643xxx911281305");
+        ticketRecogniser.recogniseTransporter(ticket);
         assertEquals(Transporter.METRO,ticket.transporter);
     }
 
     @Test
     public void recogniseTransporterTramOrBusTest() {
-        Ticket ticket = ticketRecogniser.recogniseTransporter("5293111008172015");
+        Ticket ticket = new Ticket("5293111008172015");
+        ticketRecogniser.recogniseTransporter(ticket);
         assertEquals(Transporter.TRUMORBUS,ticket.transporter);
     }
 
     @Test
     public void recogniseTransporterNightLineTest() {
-        Ticket ticket = ticketRecogniser.recogniseTransporter("9293111008172015");
+        Ticket ticket = new Ticket("9293111008172015");
+        ticketRecogniser.recogniseTransporter(ticket);
         assertEquals(Transporter.NIGHTLINE,ticket.transporter);
+    }
+
+    @Test
+    public void recogniseDateMetroTest() {
+        Ticket ticket = new Ticket("0643xxx911281305");
+        ticketRecogniser.recogniseTransporter(ticket);
+
+        ticketRecogniser.recogniseDate(ticket);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+        String date = "2019.11.28";
+        LocalDate startDate = LocalDate.parse(date, formatter);
+
+        assertEquals(startDate,ticket.startDate);
     }
 }
