@@ -56,4 +56,10 @@ public class TicketRecogniserTest {
         Ticket ticket = ticketRecogniser.recogniseTicket("5293111008172015");
         assertEquals(Transporter.TRUMORBUS,ticket.transporter);
     }
+
+    @Test
+    public void recogniseTicketNightLineTest() {
+        Ticket ticket = ticketRecogniser.recogniseTicket("9293111008172015");
+        assertEquals(Transporter.NIGHTLINE,ticket.transporter);
+    }
 }

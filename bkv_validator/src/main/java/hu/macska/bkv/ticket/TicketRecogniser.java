@@ -22,8 +22,10 @@ public class TicketRecogniser {
         Ticket ticket = new Ticket();
         if (ticketNumber.matches("\\d{4}xxx\\d{9}"))
             ticket.transporter = Transporter.METRO;
-        if (ticketNumber.matches("[^9]\\d+"))
+        if (ticketNumber.matches("^[^9]\\d+"))
             ticket.transporter = Transporter.TRUMORBUS;
+        if (ticketNumber.matches("^9\\d+"))
+            ticket.transporter = Transporter.NIGHTLINE;
         return ticket;
     }
 }
