@@ -10,4 +10,10 @@ public class TicketFelismeresTest {
         ticketFelismero = new TicketFelismeres();
         ticketFelismero.validateTicketNumber(null);
     }
+
+    @Test(expected = TicketNumberIsTooLarge.class)
+    public void validateTicketNumberInvalidLengthTest() {
+        ticketFelismero = new TicketFelismeres();
+        ticketFelismero.validateTicketNumber("EzegymarhahosszústringEzegymarhahosszústring");
+    }
 }
