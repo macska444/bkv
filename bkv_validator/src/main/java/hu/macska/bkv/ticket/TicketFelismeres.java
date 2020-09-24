@@ -6,5 +6,7 @@ public class TicketFelismeres {
             throw new TicketNumberIsNull();
         if (ticketNumber.length() > 16)
             throw new TicketNumberIsTooLarge();
+        if (ticketNumber.length() < 13)
+            throw new TicketNumberIsTooShort();
     }
 }
