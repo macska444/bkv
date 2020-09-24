@@ -18,7 +18,7 @@ public class TicketRecogniser {
         return true;
     }
 
-    public Ticket recogniseTicket(String ticketNumber) {
+    public Ticket recogniseTransporter(String ticketNumber) {
         Ticket ticket = new Ticket();
         if (ticketNumber.matches("\\d{4}xxx\\d{9}"))
             ticket.transporter = Transporter.METRO;
